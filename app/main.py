@@ -11,7 +11,9 @@ app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "statics"), name="static")
 
 app.include_router(routers.root.router, prefix="", tags=["ROOT"])
-app.include_router(routers.todolist.router, prefix="/api/todolist", tags=["API_TODOLIST"])
+app.include_router(
+    routers.todolist.router, prefix="/api/todolist", tags=["API_TODOLIST"]
+)
 
 
 @app.on_event("startup")
